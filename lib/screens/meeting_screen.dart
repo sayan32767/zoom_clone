@@ -16,6 +16,10 @@ class MeetingScreen extends StatelessWidget {
       _jitsiMeetMethods.createNewMeeting(roomName: roomName, isAudioMuted: true, isVideoMuted: true);
     }
 
+    joinMeeting() {
+      Navigator.pushNamed(context, '/video-call');
+    }
+
     return Column(
       children: [
         Row(
@@ -27,20 +31,10 @@ class MeetingScreen extends StatelessWidget {
               icon: Icons.videocam,
             ),
             HomeMeetingButton(
-              onPressed: () {},
+              onPressed: joinMeeting,
               text: 'Join Meeting',
               icon: Icons.add_box_rounded,
             ),
-            HomeMeetingButton(
-              onPressed: () {},
-              text: 'Schedule',
-              icon: Icons.calendar_today,
-            ),
-            HomeMeetingButton(
-              onPressed: () {},
-              text: 'Share Screen',
-              icon: Icons.arrow_upward,
-            )
           ],
         ),
         Expanded(

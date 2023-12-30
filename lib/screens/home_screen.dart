@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:zoom_clone/resources/auth_methods.dart';
 import 'package:zoom_clone/screens/history_meeting_screen.dart';
 import 'package:zoom_clone/screens/meeting_screen.dart';
+import 'package:zoom_clone/widgets/custom_button.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,8 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> pages = [
     const MeetingScreen(),
     const HistoryMeetingScreen(),
-    const Text('contacts'),
-    const Text('settings')
+    const Center(child: Text('No Contacts')),
+    const SignOutButton()
   ];
 
   @override
@@ -76,5 +79,20 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
     );
+  }
+}
+
+class SignOutButton extends StatelessWidget {
+  const SignOutButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    signOut() async {
+      await _auth.signOut();
+    }
+    return CustomButton(text: 'Log Out', onPressed: signOut);
   }
 }
