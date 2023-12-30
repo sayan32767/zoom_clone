@@ -1,6 +1,6 @@
-# zoom_clone
+# Zoom Clone
 
-A new Flutter project.
+A Flutter project made with jitsi_meet flutter sdk.
 
 ## Getting Started
 
